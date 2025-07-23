@@ -1,0 +1,62 @@
+import os
+from setuptools import setup, find_packages
+
+setup(
+    name="design-research-agent",
+    version="1.2.0",
+    description="AI Design Research Agent with Stateless Architecture and Human Oversight",
+    long_description=open("README.md").read() if os.path.exists("README.md") else "AI Design Research Agent with Stateless Architecture and Human Oversight",
+    long_description_content_type="text/markdown",
+    author="Design Agent Team",
+    python_requires=">=3.11",
+    packages=find_packages(),
+    install_requires=[
+        "fastapi>=0.104.0",
+        "uvicorn[standard]>=0.24.0",
+        "pydantic>=2.5.0",
+        "crewai>=0.41.0",
+        "langchain>=0.1.0",
+        "langchain-openai>=0.0.5",
+        "asyncpg>=0.29.0",
+        "psycopg2-binary>=2.9.9",
+        "alembic>=1.13.0",
+        "httpx>=0.25.0",
+        "aiohttp>=3.9.0",
+        "tenacity>=8.2.3",
+        "circuit-breaker>=1.1.0",
+        "pandas>=2.1.4",
+        "numpy>=1.24.4",
+        "python-dotenv>=1.0.0",
+        "structlog>=23.2.0",
+        "pydantic-settings>=2.1.0",
+    ],
+    extras_require={
+        "dev": [
+            "pytest>=7.4.3",
+            "pytest-asyncio>=0.21.1",
+            "pytest-mock>=3.12.0",
+            "httpx[testing]",
+            "coverage>=7.3.2",
+            "black>=23.11.0",
+            "isort>=5.12.0",
+            "mypy>=1.7.1",
+        ],
+        "redis": ["redis>=5.0.1"],
+        "postgres": ["asyncpg>=0.29.0", "psycopg2-binary>=2.9.9"],
+        "ml": ["scikit-learn>=1.3.2", "nltk>=3.8.1"],
+    },
+    entry_points={
+        "console_scripts": [
+            "design-agent=design_research_agent.cli:main",
+        ],
+    },
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    ],
+)
